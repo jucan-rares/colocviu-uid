@@ -1,64 +1,31 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" type="text/css" href=" uid.css">
-    </head>
+  <head>
+    <link rel="stylesheet" type="text/css" href=" uid.css">
+  </head>
 
-    <body>
-        <button id="displayButton">Afișează</button>
+  <body>
+    <div id="loading" class="hidden loader"></div>
 
-        <div id="loading" class="hidden loader"></div>
+    <div id="firstList">
+      <button id="displayButton">Afișează 10 cărți</button>
+      <ol id="content1" class="hidden list"> </ol>
+    </div>
+  
+    <div id="secondList">
+      <input type="number" id="resultsLimit" placeholder="Limita rezultatelor">
+      <button id="limitButton">Caută</button>
+      <ol id="content2" class="hidden list"> </ol>
+      <div id="error" class="hidden"></div>
+    </div>
 
-        <div>
-            <table id="content1" class="hidden table">
-              <thead>
-                <tr>
-                  <th>Book id</th>
-                  <th>Title</th>
-                  <th>Subtitle</th>
-                  <th>Links</th>
-                </tr>
-              </thead>
-              <tbody id="data1">
-              </tbody>
-            </table>
-        </div>
+    <div id="thirdList">
+      <input type="text" id="searchTerm" placeholder="Introduceți cuvântul cheie">
+      <button id="searchButton">Caută</button>
+      <ol id="content3" class="hidden list"> </ol>
+      <div id="error2" class="hidden"></div>
+    </div>
 
-        <input type="number" id="resultsLimit" placeholder="Limita rezultatelor">
-        <button id="limitButton">Setează Limita</button>
-
-        <div>
-          <table id="content2" class="hidden table">
-            <thead>
-              <tr>
-                <th>Book id</th>
-                <th>Title</th>
-                <th>Subtitle</th>
-                <th>Links</th>
-              </tr>
-            </thead>
-            <tbody id="data2">
-            </tbody>
-          </table>
-        </div>
-
-        <div id="error" class="hidden"></div>
-        
-        <div id="searchBox">
-          <input type="text" id="searchInput" placeholder="Caută o carte">
-          <button id="searchButton">Caută</button>
-        </div>
-
-        <div id="popup" class="hidden">
-          <h2>Detalii Carte</h2>
-          <p><strong>Book_id:</strong> <span id="popupBookId"></span></p>
-          <p><strong>Short name:</strong> <span id="popupShortName"></span></p>
-          <p><strong>Title:</strong> <span id="popupTitle"></span></p>
-          <p><strong>Abstract:</strong> <span id="popupAbstract"></span></p>
-          <p id="popupErrorMessage" class="hidden">Nici o carte găsită pentru acest termen de căutare.</p>
-          <button id="closePopup">Închide</button>
-        </div>
-
-        <script src="uid.js"></script>
-    </body>
-</html>
+    <script src="uid.js"></script>
+  </body>
+</html>   
