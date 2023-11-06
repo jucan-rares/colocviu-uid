@@ -94,6 +94,34 @@ document.getElementById('limitButton').addEventListener('click', function () {
     }
 });
 
+document.getElementById('searchButton').addEventListener('click', function () {
+    const searchTerm = document.getElementById('searchInput').value;
+    
+    // Fetch data based on the search term
+    fetch(`https://edtechbooks.org/api.php?action=search_books&term=${searchTerm}`, {
+        method: 'GET'
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success' && data.books) {
+            // Display the pop-up with book details
+            const firstBook = data.books[Object.keys(data.books)[0]]; // Assuming you want details of the first book
+            showPopup(firstBook);
+        } else {
+            // Display an error message in the pop-up
+            showErrorMessage();
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+});
+
+document.getElementById('closePopup').addEventListener('click', function () {
+    // Close the pop-up when the "Închide" button is clicked
+    document.getElementById('popup').classList.add('hidden');
+});
+
 function hide(elementId) {
     const element = document.getElementById(elementId);
     if (element) {
@@ -105,4 +133,16 @@ function show(elementId) {
     if (element) {
         element.style.display = 'block';
     }
+}
+function showPopup(book) {
+    document.getElementById('popupBookId').textContent = book.book_id;
+    document.getElementById('popupShortName').textContent = book.short_name;
+    document.getElementById('popupTitle').textContent = book.title;
+    document.getElementById('popupAbstract').textContent = book.abstract;
+    hide('popupErrorMessage');
+    show('popup');
+}
+function showErrorMessage() {
+    show('popupErrorMessage');
+    hide('popup');
 }

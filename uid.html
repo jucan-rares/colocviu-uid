@@ -44,6 +44,21 @@
 
         <div id="error" class="hidden"></div>
         
+        <div id="searchBox">
+          <input type="text" id="searchInput" placeholder="Caută o carte">
+          <button id="searchButton">Caută</button>
+        </div>
+
+        <div id="popup" class="hidden">
+          <h2>Detalii Carte</h2>
+          <p><strong>Book_id:</strong> <span id="popupBookId"></span></p>
+          <p><strong>Short name:</strong> <span id="popupShortName"></span></p>
+          <p><strong>Title:</strong> <span id="popupTitle"></span></p>
+          <p><strong>Abstract:</strong> <span id="popupAbstract"></span></p>
+          <p id="popupErrorMessage" class="hidden">Nici o carte găsită pentru acest termen de căutare.</p>
+          <button id="closePopup">Închide</button>
+        </div>
+
         <script src="uid.js"></script>
     </body>
 </html>
