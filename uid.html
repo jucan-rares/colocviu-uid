@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href=" uid.css">
+    </head>
+
+    <body>
+        <button id="displayButton">Afișează</button>
+
+        <div id="loading" class="hidden loader"></div>
+
+        <div>
+            <table id="content1" class="hidden table">
+              <thead>
+                <tr>
+                  <th>Book id</th>
+                  <th>Title</th>
+                  <th>Subtitle</th>
+                  <th>Links</th>
+                </tr>
+              </thead>
+              <tbody id="data1">
+              </tbody>
+            </table>
+        </div>
+
+        <input type="number" id="resultsLimit" placeholder="Limita rezultatelor">
+        <button id="limitButton">Setează Limita</button>
+
+        <div>
+          <table id="content2" class="hidden table">
+            <thead>
+              <tr>
+                <th>Book id</th>
+                <th>Title</th>
+                <th>Subtitle</th>
+                <th>Links</th>
+              </tr>
+            </thead>
+            <tbody id="data2">
+            </tbody>
+          </table>
+        </div>
+
+        <div id="error" class="hidden"></div>
+        
+        <script src="uid.js"></script>
+    </body>
+</html>
