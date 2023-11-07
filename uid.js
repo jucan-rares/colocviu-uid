@@ -17,7 +17,6 @@ document.getElementById('limitButton').addEventListener('click', function () {
 
     if (resultsLimit >= 1 && resultsLimit <= 200) {
         loading();
-        hide('error');
 
         setTimeout(function () {
             show('content2');
@@ -26,9 +25,8 @@ document.getElementById('limitButton').addEventListener('click', function () {
 
         fetchResultsWithLimit(resultsLimit);
     } else {
-        document.getElementById('error').innerHTML = 'Limita trebuie să fie între 1 și 200';
+        alert('Limit must be between 1 and 200');
         hide('content2');
-        show('error');
     }
 });
 document.getElementById('searchButton').addEventListener('click', function () {
@@ -38,10 +36,8 @@ document.getElementById('searchButton').addEventListener('click', function () {
     const searchTerm = document.getElementById('searchTerm').value.trim();
 
     loading();
-    hide('error2');
 
     setTimeout(function () {
-        show('content3');
         afterLoading();
     }, 3000);
 
@@ -50,7 +46,7 @@ document.getElementById('searchButton').addEventListener('click', function () {
 document.getElementById('popup').addEventListener('click', function () {
     hide('popup');
 });
-
+  
 function fetchResultsBasic(){
     fetch('https://edtechbooks.org/api.php?action=search_books', {
         method: 'GET'
@@ -88,13 +84,11 @@ function fetchResultsByKeyword(searchTerm) {
             .then(data => {
                 renderBookListWithoutLinks(data, 'popup-content');
                 if (!data.books || Object.keys(data.books).length === 0) {
-                    document.getElementById('error2').innerHTML = 'Nu s-au găsit cărți pentru cuvântul cheie specificat.';
+                    alert('There are no books related to the key word');
                     hide('popup-content');
-                    show('error2');
                 } else {
                     show('popup');
                     show('popup-content');
-                    show('closePopup');
                 }
                 afterLoading();
             });

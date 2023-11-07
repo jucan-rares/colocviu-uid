@@ -1,36 +1,38 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Bookshop</title>
     <link rel="stylesheet" type="text/css" href="uid.css">
   </head>
 
   <body>
+    <header>
+      <h1 style="text-align: center;">Welcome to the Jucanus Bookshop!</h1>
+      <div class="header-content">
+        <button id="displayButton" class="header-button">Display</button>
+        <div class="header-center">
+          <input type="number" id="resultsLimit" class="header-input" placeholder="Enter limit">
+          <button id="limitButton" class="header-button">Search</button>
+        </div>
+        <div class="header-right">
+          <input type="text" id="searchTerm" class="header-input" placeholder="Enter keyword">
+          <button id="searchButton" class="header-button">Search</button>
+        </div>
+      </div>
+    </header>
+
     <div id="loading" class="hidden loader"></div>
 
     <div id="firstList">
-      <button id="displayButton">Afișează 10 cărți</button>
-      <ol id="content1" class="hidden list"></ol>
+      <ol id="content1" class="hidden list fade-in"> </ol>
     </div>
   
     <div id="secondList">
-      <input type="number" id="resultsLimit" placeholder="Limita rezultatelor">
-      <button id="limitButton">Caută</button>
-      <ol id="content2" class="hidden list"></ol>
-      <div id="error" class="hidden"></div>
+      <ol id="content2" class="hidden list fade-in"> </ol>
     </div>
 
-    <div id="thirdList">
-      <input type="text" id="searchTerm" placeholder="Introduceți cuvântul cheie">
-      <button id="searchButton">Caută</button>
-      <ol id="content3" class="hidden list"></ol>
-      <div id="error2" class="hidden"></div>
-    </div>
-
-    <div id="popup">
-      <div id="popup-content">
-        <div id="popup-scrollable">
-        </div>
-      </div>
+    <div id="popup" class="hidden">
+      <ol id="popup-content" class="hidden fade-in"> </ol>
     </div>
     
     <script src="uid.js"></script>
