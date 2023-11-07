@@ -1,3 +1,5 @@
+hide('popup');
+
 document.getElementById('displayButton').addEventListener('click', function () {
 
     loading();
@@ -31,10 +33,11 @@ document.getElementById('limitButton').addEventListener('click', function () {
 });
 document.getElementById('searchButton').addEventListener('click', function () {
 
+    show('popup');
+
     const searchTerm = document.getElementById('searchTerm').value.trim();
 
     loading();
-
     hide('error2');
 
     setTimeout(function () {
@@ -43,6 +46,9 @@ document.getElementById('searchButton').addEventListener('click', function () {
     }, 3000);
 
     fetchResultsByKeyword(searchTerm);
+});
+document.getElementById('popup').addEventListener('click', function () {
+    hide('popup');
 });
 
 function fetchResultsBasic(){
@@ -74,19 +80,23 @@ function fetchResultsWithLimit(resultsLimit) {
     });
 }
 function fetchResultsByKeyword(searchTerm) {
-
     fetch(`https://edtechbooks.org/api.php?action=search_books&term=${searchTerm}`, {
         method: 'GET'
     })
     .then(res => {
         res.json()
             .then(data => {
-                renderBookListWithoutLinks(data, 'content3');
+                renderBookListWithoutLinks(data, 'popup-content');
                 if (!data.books || Object.keys(data.books).length === 0) {
                     document.getElementById('error2').innerHTML = 'Nu s-au găsit cărți pentru cuvântul cheie specificat.';
-                    hide('content3');
+                    hide('popup-content');
                     show('error2');
+                } else {
+                    show('popup');
+                    show('popup-content');
+                    show('closePopup');
                 }
+                afterLoading();
             });
     })
     .catch(error => {
@@ -148,7 +158,6 @@ function renderBookListWithoutLinks(data, element) {
 
             const detailsToDisplay = ["book_id", "short_name", "title", "abstract"];
             detailsToDisplay.forEach(key => {
-                
                 const detailListItem = document.createElement('li');
                 detailListItem.innerHTML = `<strong>${key}:</strong> ${bookData[key]}`;
                 bookDetailsList.appendChild(detailListItem);

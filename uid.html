@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href=" uid.css">
+    <link rel="stylesheet" type="text/css" href="uid.css">
   </head>
 
   <body>
@@ -9,23 +9,30 @@
 
     <div id="firstList">
       <button id="displayButton">Afișează 10 cărți</button>
-      <ol id="content1" class="hidden list"> </ol>
+      <ol id="content1" class="hidden list"></ol>
     </div>
   
     <div id="secondList">
       <input type="number" id="resultsLimit" placeholder="Limita rezultatelor">
       <button id="limitButton">Caută</button>
-      <ol id="content2" class="hidden list"> </ol>
+      <ol id="content2" class="hidden list"></ol>
       <div id="error" class="hidden"></div>
     </div>
 
     <div id="thirdList">
       <input type="text" id="searchTerm" placeholder="Introduceți cuvântul cheie">
       <button id="searchButton">Caută</button>
-      <ol id="content3" class="hidden list"> </ol>
+      <ol id="content3" class="hidden list"></ol>
       <div id="error2" class="hidden"></div>
     </div>
 
+    <div id="popup">
+      <div id="popup-content">
+        <div id="popup-scrollable">
+        </div>
+      </div>
+    </div>
+    
     <script src="uid.js"></script>
   </body>
-</html>   
+</html>
